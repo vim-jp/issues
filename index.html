@@ -1,1 +1,82 @@
-<meta http-equiv="Refresh" content="0; URL=http://github.com/vim-jp/issues/issues">
+<!doctype html>
+<meta charset="utf-8">
+<style>
+#issues {
+  font-family: Vernada
+  background: white;
+  width: 800px;
+}
+#issues a {
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+#issues .issue_name {
+  margin-bottom: 1em;
+}
+#issues .issue_desc {
+  margin: 1em;
+  padding: 0.5em;
+  background-color: #eeeeee;
+  border: 1px black dotted;
+}
+#issues .issue_desc img {
+  display: block;
+  padding: 1em;
+}
+#issues .issue_desc p {
+  padding-left: 1em;
+  white-space: pre-wrap;
+}
+#issues .inline_code {
+  border: solid 1px #ccc;
+}
+#issues pre {
+  border: solid 1px #ccc;
+  width: 500px;
+}
+#issues .expand-all {
+  font-size: 0.8em;
+  color: blue;
+}
+#issues .goto {
+  font-size: 0.8em;
+  color: blue;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="https://raw.github.com/coreyti/showdown/master/src/showdown.js"></script>
+<script>
+$(function() {
+  var dl = $("<span/>").text("Loading...").appendTo($("#issues").empty());
+  $.getJSON("http://github.com/api/v2/json/issues/list/vim-jp/issues/open?callback=?", function(data) {
+    var sd = new Showdown.converter();
+    var dl = $("<dl>").appendTo($("#issues").empty());
+    $.each(data.issues, function(index, item) {
+      dl.append($("<dt/>").addClass("issue_name").add($('<a/>').text(item.number + '. ' + item.title).attr('href', '#').click(function() {
+        $(this).next().slideDown();
+        return false;
+      })));
+      var html = $("<div/>").html(sd.makeHtml(item.body));
+      $('p code', html).each(function() {
+        if ($(this).html().match(/\n/))
+          $(this).wrap('<pre>');
+        else
+          $(this).addClass('inline_code');
+      });
+      html.prepend($('<a/>').addClass('goto').text('link').attr('href', '#').click(function() {
+        location.href = item.html_url;
+        return false;
+	  })).prepend('<br/>');
+      dl.append($("<dd/>").hide().addClass("issue_desc").html(html));
+    });
+    $('#issues').prepend($('<a/>').addClass('expand-all').text('expand all').attr('href', '#').click(function() {
+      $('.issue_desc').fadeIn();
+    }));
+  });
+});
+</script>
+<br />
+<a href="https://github.com/vim-jp/issues/issues">Go to vim-jp's issues</a><br />
+<br />
+<div id="issues" />
