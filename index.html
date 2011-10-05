@@ -72,6 +72,7 @@ $(function() {
     });
     $('#issues').prepend($('<a/>').addClass('expand-all').text('expand all').attr('href', '#').click(function() {
       $('.issue_desc').fadeIn();
+      return false;
     }));
   });
 });
