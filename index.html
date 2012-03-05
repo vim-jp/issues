@@ -3,66 +3,54 @@
 	<head>
 		<title>vim-jp - issues</title>
 		<meta charset="utf-8"/>
-		<link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'/>
-		<link rel="stylesheet/tass" type="text/x-tass" href="styles.tass"/>
-		<script type="text/javascript" src="tass.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Prosto One' rel='stylesheet' type='text/css'/>
+		<link rel="stylesheet" type="text/css" href="styles.css"/>
 		<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		</script>
 	</head>
 	<body>
-		<div id="whole">
-			<header id="top">
-				<h1><a href="/">vim-jp</a></h1>
-				<p class="description">vim-jp issues</p>
-			</header>
+		<header id="global-header">
+			<h1><a href="/">vim-jp</a></h1>
+			<p class="description">issues on vim-jp</p>
+		</header>
 
-			<div id="content">
-				<div id="content-inner">
-					<div class="line" id="issues">
-						<section class="w1">
-							<h1>Bugs?</h1>
-							<div class="line">
-								<section class="w2">
-									<h1>Active Issues</h1>
-									<script src="githubapi.js" data-api="repos/vim-jp/issues/issues?sort=updated;state=open;direction=desc">
-										<div class="issues">
-										<% for (var i = 0, it; (it = data[i]); i++) { %>
-											<div class="issue <%= it.state %>">
-												<span class="number">#<%= it.number %></span>
-												<a href="<%= it.html_url %>" class="title"><%= it.title %></a>
-												by
-												<span class="author"><img src="<%= it.user.avatar_url %>" width="16" height="16"/><%= it.user.login %></span>
-											</div>
-										<% } %>
-										</div>
-									</script>
-								</section>
-								<section class="w2">
-									<h1>Fixed Issues</h1>
-									<script src="githubapi.js" data-api="repos/vim-jp/issues/issues?sort=updated;state=closed;direction=desc">
-										<div class="issues">
-										<% for (var i = 0, it; (it = data[i]); i++) { %>
-											<div class="issue <%= it.state %>">
-												<span class="number">#<%= it.number %></span>
-												<a href="<%= it.html_url %>" class="title"><%= it.title %></a>
-												by
-												<span class="author"><img src="<%= it.user.avatar_url %>" width="16" height="16"/><%= it.user.login %></span>
-											</div>
-										<% } %>
-										</div>
-									</script>
-								</section>
-							</div>
-						</section>
+		<div id="content">
+			<section class="issues active-issues">
+				<h1>Active Issues</h1>
+				<script src="githubapi.js" data-api="repos/vim-jp/issues/issues?sort=updated;state=open;direction=desc">
+					<div class="issues">
+					<% for (var i = 0, it; (it = data[i]); i++) { %>
+						<div class="issue <%= it.state %>">
+							<span class="issue-number">#<%= it.number %></span>
+							<a href="<%= it.html_url %>" class="issue-title"><%= it.title %></a>
+							by
+							<span class="issue-author"><img src="<%= it.user.avatar_url %>" width="16" height="16"/><%= it.user.login %></span>
+						</div>
+					<% } %>
 					</div>
-				</div>
-			</div>
-
-			<footer id="global-footer">
-				<p class="powered">Powered by <a href="https://github.com/cho45/tasscss">TASS</a></p>
-			</footer>
+				</script>
+			</section>
+			<section class="issues fixed-issues">
+				<h1>Fixed Issues</h1>
+				<script src="githubapi.js" data-api="repos/vim-jp/issues/issues?sort=updated;state=closed;direction=desc">
+					<div class="issues">
+					<% for (var i = 0, it; (it = data[i]); i++) { %>
+						<div class="issue <%= it.state %>">
+							<span class="issue-number">#<%= it.number %></span>
+							<a href="<%= it.html_url %>" class="issue-title"><%= it.title %></a>
+							by
+							<span class="issue-author"><img src="<%= it.user.avatar_url %>" width="16" height="16"/><%= it.user.login %></span>
+						</div>
+					<% } %>
+					</div>
+				</script>
+			</section>
 		</div>
+
+		<footer id="global-footer">
+			<p class="powered">This site is based on <a href="https://cho45.github.com/tasscss">cho45/tasscss</a></p>
+		</footer>
 	</body>
 </html>

@@ -1,0 +1,24 @@
+body {
+	font-family: 'Prosto One'
+}
+
+a:link {
+	text-decoration: underline;
+	color: #447fae;
+}
+
+a:visited {
+	color: #447fae;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.issues {
+	padding-left: 1em;
+}
+
+.issue-title {
+	padding-right: 1em;
+}
