@@ -12,7 +12,7 @@
 
 (なるべく詳しく書いてください 記述例:)
 
-*   Windowsh 10 Pro 64bit (10.0.10586)
+*   Windows 10 Pro 64bit (10.0.10586)
 *   macOS Sierra
 *   Linux fedora 23 64bit
 *   Others
