@@ -1,6 +1,9 @@
 ---
 name: Bug Report
 about: 不具合の報告
+title: ''
+labels: ''
+assignees: ''
 
 ---
 
@@ -22,7 +25,7 @@ about: 不具合の報告
 
 ## Vimのバージョン
 
-8.1.???
+8.1.????
 
 ( `:version` で確認できます)
 

@@ -1,6 +1,9 @@
 ---
 name: Feature Request
 about: 機能要望
+title: ''
+labels: kind/new feature
+assignees: ''
 
 ---
 
@@ -23,7 +26,7 @@ about: 機能要望
 
 ## Vimのバージョン
 
-8.1.???
+8.1.????
 
 ( `:version` で確認できます)
 

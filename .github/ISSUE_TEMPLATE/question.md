@@ -1,6 +1,9 @@
 ---
 name: Question
 about: 質問 (既存のIssueや一般事例を良く調べてからしてください)
+title: ''
+labels: kind/question
+assignees: ''
 
 ---
 
@@ -10,7 +13,7 @@ about: 質問 (既存のIssueや一般事例を良く調べてからしてくだ
 
 ## Vimのバージョン
 
-8.1.???
+8.1.????
 
 ( `:version` で確認できます)
 
